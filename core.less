@@ -1,7 +1,7 @@
 /*//////////////////////////////////////////////////////
 [  ]                                                [  ]
 [  ]          The LESS-core LESS Library            [  ]
-[  ]                    v0.3.1                      [  ]
+[  ]                    v0.3.2                      [  ]
 [  ]                                                [  ]
 [  ]            written & maintained by             [  ]
 [  ]            Dave Lunny @dave_lunny              [  ]
@@ -50,6 +50,11 @@
 
 
 //      MIXINS    
+.appearance-none(){
+  -webkit-appearance: none;
+    -moz-appearance: none;
+      appearance: none;
+}
 .user-select(@user-select) {
   -webkit-touch-callout: @user-select;
   -webkit-user-select: @user-select;
@@ -97,10 +102,10 @@
           transition:    @prop @speed;
 }
 .trans-ease(@prop, @speed, @ease){
-  -webkit-transition:    @prop @speed;
-     -moz-transition:    @prop @speed;
-       -o-transition:    @prop @speed;
-          transition:    @prop @speed;
+  -webkit-transition:    @prop @speed @ease;
+     -moz-transition:    @prop @speed @ease;
+       -o-transition:    @prop @speed @ease;
+          transition:    @prop @speed @ease;
 }
 .backface(@backface){
   -webkit-backface-visibility:    @backface;
@@ -176,11 +181,8 @@
   background: linear-gradient(to right,  @startColor 0%, @endColor 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='@startColor', endColorstr='@endColor',GradientType=1 );
 }
-.appearance-none(){
-  -webkit-appearance: none;
-    -moz-appearance: none;
-      appearance: none;
-}
+
+
 //    CORE CLASSES
 .ib  {
   display:        inline-block;
@@ -434,13 +436,16 @@
 ////////////////////////
 //    BTN CLASSES     //
 ////////////////////////
-
 .btn {
 
 }
 
+////////////////////////////
+//     Texarea Class      //
+////////////////////////////
+.textarea {
 
-
+}
 
 
 
