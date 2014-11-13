@@ -16,7 +16,7 @@ You can totes use this as a reference, or compile it and use it in your own proj
 /*//////////////////////////////////////////////////////
 [  ]                                                [  ]
 [  ]          The LESS-core LESS Library            [  ]
-[  ]                    v0.3                        [  ]
+[  ]                    v0.3.1                      [  ]
 [  ]                                                [  ]
 [  ]            written & maintained by             [  ]
 [  ]            Dave Lunny @dave_lunny              [  ]
