@@ -1,25 +1,24 @@
-less-core
-=========
+###Lesslie [![](http://img.shields.io/badge/version-1.0.0-blue.svg)](https://github.com/himynameisdave/Lesslie/releases/tag/v1.0.0)
+> The Modular [LESS](http://lesscss.org/) Library For The Rest of Us!
 
-My core.less file, which I reference from most LESS files I write.
+We all need a good LESS library to simplify stupid things like vendor prefixes and just general annoyances we all face.
 
-Contains a bunch of helpful mixins that do everything from add vendor-prefixed transition properties, to create cross-browser gradients.
+Meet Lesslie. She's the hot new young thing on the block. Totally modular, always being updated, and easy to understand and use.
 
+Built out of little components that you can easily remove/steal/alter as you please, messing around with Lesslie makes LESS an even better choice as a pre-processor.
 
+---
 
---
-###MIT Licence
-You can totes use this as a reference, or compile it and use it in your own project (although it doen't compile to much - it's mainly mixins).
-*Please attribute me by either linking to [my github](https://github.com/himynameisdave) or [my twitter](https://twitter.com/dave_lunny), or by adding this to the comments of your LESS file*
+####Howcanigetit?
 
-```css
-/*//////////////////////////////////////////////////////
-[  ]                                                [  ]
-[  ]          The LESS-core LESS Library            [  ]
-[  ]                    v1.0.0                      [  ]
-[  ]                                                [  ]
-[  ]            written & maintained by             [  ]
-[  ]            Dave Lunny @dave_lunny              [  ]
-[  ]                                                [  ]
-//////////////////////////////////////////////////////*/
+Clone this repo, or through the ol' [Bower](http://bower.io/):
+
+```bash
+bower install git@github.com:himynameisdave/less-core.git
 ```
+
+ 
+
+
+
+ ^Created by [Dave Lunny](https://himynameisdave.github.io) in the beautiful year 2014^

@@ -1,0 +1,27 @@
+/*####################################
+##         MIXIN: TRANSFORMS        ##
+##    	mixins/transforms.less   	##
+##              v1.0                ##
+######################################*/
+
+
+
+.scale(@val){
+    -ms-transform:      scale(@val); /* IE 9 */
+    -webkit-transform:  scale(@val); /* Chrome, Safari, Opera */
+    transform:          scale(@val);
+}
+.scale-x-y(@x,@y){
+    -ms-transform:      scale(@x,@y); /* IE 9 */
+    -webkit-transform:  scale(@x,@y); /* Chrome, Safari, Opera */
+    transform:          scale(@x,@y);
+}
+.rotate(@rotate){
+  -ms-transform:      rotate(@rotate); /* IE 9 */
+  -webkit-transform:  rotate(@rotate); /* Chrome, Safari, Opera */
+  transform:          rotate(@rotate);
+}
+
+//	TODO: add more transforms
+
+

@@ -1,0 +1,74 @@
+/*####################################
+##            BASE VARS             ##
+##          base/base.less          ##
+##              v1.0                ##
+######################################*/
+
+
+//  Inline-block
+.ib  {
+  display:        inline-block;
+  vertical-align: middle;
+}
+
+//  Bold text
+.bold {
+  font-weight:    bold;
+}
+
+//  Center
+.center  {
+  text-align:     center;
+}
+
+//  height:100%
+.fullheight {
+  height:         100%;
+}
+
+//  min-height:100%
+.minfullheight {
+  min-height:     100%;
+}
+
+//  visually hide
+.hidden {
+  visibility: hidden;
+  opacity: 0;
+}
+
+//  display:none
+.vanish {
+  display:  none;
+}
+
+//  mauto - class
+.mauto{
+  margin-left:  auto;
+  margin-right: auto;
+}
+//  mauto - mixin
+.mauto(@topBottom){
+  margin: @topBottom auto;
+}
+
+//  positioning
+.pos-rel {
+  position: relative;
+}
+.pos-abs {
+  position:    absolute;
+}
+.pos-fix {
+  position: fixed;
+}
+
+//  better UX for clickable elements
+.clickable {cursor: pointer; .user-select(none)}
+
+//  draw a circle
+//  ::TEST::
+.circle {
+  .box-sizing();
+  .border-radius(100%);
+}

@@ -1,0 +1,14 @@
+{
+  "name": "less-core",
+  "version": "1.0.0",
+  "description": "",
+  "main": "gulpfile.js",
+  "private": "true",
+  "devDependencies": {
+    "gulp": "^3.8.10",
+    "gulp-autoprefixer": "^2.0.0",
+    "gulp-concat": "^2.4.2",
+    "gulp-concat-css": "^1.1.1",
+    "gulp-csscomb": "^3.0.3"
+  }
+}

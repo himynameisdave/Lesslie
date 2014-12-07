@@ -1,0 +1,27 @@
+/*####################################
+##          MIXIN: FLEXBOX          ##
+##        mixins/flexbox.less       ##
+##              v1.0                ##
+######################################*/
+
+
+// Still untested/under development:
+.flexbox(@flex, @direction, @justify, @align){
+  display:                  -ms-flexbox;
+  display:                  -webkit-flex;
+  display:                  flex;
+
+  -ms-flex-direction:       @direction;
+  -webkit-flex-direction:   @direction;
+  flex-direction:           @direction;
+
+  -ms-flex-pack:            @justify;
+  -webkit-justify-content:  @justify;
+  justify-content:          @justify;
+
+  -ms-flex-align:           @align;
+  -webkit-align-items:      @align;
+  align-items:              @align;
+}
+
+
