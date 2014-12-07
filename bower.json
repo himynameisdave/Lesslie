@@ -2,5 +2,9 @@
     "name": "Lesslie",
     "version": "1.0.0",
     "main": "dist/lesslie.less",
-    "ignore": [ ]
+    "ignore": [
+    	"node_modules/",
+    	".gitignore"
+    ],
+    "homepage": "https://github.com/himynameisdave/Lesslie"
 }
