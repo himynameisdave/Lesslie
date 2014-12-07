@@ -16,13 +16,13 @@ Built out of little components that you can easily remove/steal/alter as you ple
 Clone this repo, or through the good ol' [Bowers](http://bower.io/):
 
 ```bash
-bower install git@github.com:himynameisdave/Lesslie.git
+bower install lesslie
 ```
 
 By default, it's gunna throw that in your bower_components/ directory. You can use it as a reference when writing your Less like this:
 
 ```less
-@import (reference) "[root directory]./bower_components/Lesslie/dist/lesslie.less";
+@import (reference) "[root directory]./bower_components/lesslie/dist/lesslie.less";
 ```
 
 
