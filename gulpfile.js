@@ -15,7 +15,7 @@ gulp.task('default', function(){
 				s+'base/base.less',
 				s+'modules/*.less'
 			 ])
-		.pipe(concat('core.less'))
+		.pipe(concat('lesslie.less'))
 		.pipe(gulp.dest('./dist/'));
 
 });
