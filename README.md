@@ -25,6 +25,8 @@ By default, it's gunna throw that in your bower_components/ directory. You can u
 @import (reference) "[root directory]./bower_components/Lesslie/dist/lesslie.less";
 ```
 
+Now wasn't that easy?
+
 ---
 
 #####Future
