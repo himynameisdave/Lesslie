@@ -4,7 +4,10 @@
     "main": "dist/lesslie.less",
     "ignore": [
     	"node_modules/",
-    	".gitignore"
+    	".gitignore",
+    	"tmp/",
+    	"test/",
+    	"LICENCE"
     ],
     "homepage": "https://github.com/himynameisdave/Lesslie"
 }
