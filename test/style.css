@@ -831,6 +831,8 @@ blockquote
     margin: .25em .75em;
     padding: .75em 1.25em;
 
+    transition: background .35s;
+
     color: #f2f2f2;
     border-radius: 5px;
     background: #007f99;
@@ -843,6 +845,10 @@ blockquote .cite
     display: block;
 
     padding: .5em 1em;
+}
+blockquote:hover
+{
+    background: #0086a1;
 }
 blockquote.quotey::before,
 blockquote.quotey:before
@@ -859,6 +865,7 @@ blockquote.quotey:before
     display: block;
 
     content: '\201C';
+    transition: left .35s ease-in-out;
 
     opacity: .15;
 }
@@ -877,8 +884,19 @@ blockquote.quotey:after
     display: block;
 
     content: '\201D';
+    transition: right .35s ease-in-out;
 
     opacity: .15;
+}
+blockquote.quotey:hover::before,
+blockquote.quotey:hover:before
+{
+    left: 2%;
+}
+blockquote.quotey:hover::after,
+blockquote.quotey:hover:after
+{
+    right: 7.5%;
 }
 /*####################################
 ##           BASE CLASSES           ##
