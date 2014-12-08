@@ -1,4 +1,4 @@
-###Lesslie [![](http://img.shields.io/badge/version-1.0.0-blue.svg)](https://github.com/himynameisdave/Lesslie/releases/tag/v1.0.0)
+###Lesslie [![](http://img.shields.io/badge/version-1.0.1-blue.svg)](https://github.com/himynameisdave/Lesslie/releases/tag/1.0.1)
 > The (Modular) [LESS](http://lesscss.org/) Library For The Rest of Us!
 
 ![Lesslie](http://media.giphy.com/media/aek4CX1IzVx7y/giphy.gif)
@@ -46,6 +46,8 @@ This adds things like the reset, spacing classes, and modules to your Less file.
 ###Future
 
 Looking to maybe expand Lesslie to be a (light) framework. In other words I'm essentially like every other front-end dev with too much time on his hands.
+
+In the nearer future though I would like to build a thorough wiki on using Lesslie.
 
 ---
 

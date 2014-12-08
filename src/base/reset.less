@@ -6,7 +6,7 @@
 
 
 //	base reset
-html, body, div, span, h1, h2, h3, h4, h5, h6, p, a, form, label, table, caption, tbody, tfoot, thead, tr, th, td, canvas, footer, header, menu, nav {
+html, body, div, span, a, form, label, table, caption, tbody, tfoot, thead, tr, th, td, canvas, footer, header, menu, nav {
     margin: 0;
     padding: 0;
     border: 0;
@@ -59,16 +59,11 @@ table { border-collapse: collapse; border-spacing: 0; }
 //	Quick SVG fix
 svg { overflow: visible; }
 
-//	better links
-//	::TODO:: move this to a 'links' module
-a {
-    .trans(color, 0.4s);
-    color: @vrettaBlue;
-    text-decoration: underline;
-    &:hover {
-        color: #f66;
-        text-decoration: none;
-    }
+//	fix the horizontal row
+hr {
+	margin: 0.25em 0.1em;
+	border-top: 1px dotted @darkColor-1;
+	border-bottom: 0;
 }
 
 

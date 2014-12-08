@@ -67,14 +67,14 @@ gulp.task( 'tester', function(){
 
 	gulp.src( 'test/style.less' )
 		.pipe( less() )
+				.on( 'error', function(e){
+					console.log("Ya done goofed!");
+					console.log("Error on line " + e.line + " in the file " + e.filename);
+				} )
 		.pipe( prfx({
 				browsers: ['last 2 versions'],
             	cascade: true
-			    }) )
-				.on( 'error', function(e){
-					console.log("Ya done goofed!");
-					console.log(e);
-				} )
+			  }) )
 		.pipe( comb() )
 		.pipe( gulp.dest( 'test/' ) );
 

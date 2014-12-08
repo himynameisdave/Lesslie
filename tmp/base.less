@@ -6,7 +6,7 @@
 
 
 //	base reset
-html, body, div, span, h1, h2, h3, h4, h5, h6, p, a, form, label, table, caption, tbody, tfoot, thead, tr, th, td, canvas, footer, header, menu, nav {
+html, body, div, span, a, form, label, table, caption, tbody, tfoot, thead, tr, th, td, canvas, footer, header, menu, nav {
     margin: 0;
     padding: 0;
     border: 0;
@@ -59,16 +59,11 @@ table { border-collapse: collapse; border-spacing: 0; }
 //	Quick SVG fix
 svg { overflow: visible; }
 
-//	better links
-//	::TODO:: move this to a 'links' module
-a {
-    .trans(color, 0.4s);
-    color: @vrettaBlue;
-    text-decoration: underline;
-    &:hover {
-        color: #f66;
-        text-decoration: none;
-    }
+//	fix the horizontal row
+hr {
+	margin: 0.25em 0.1em;
+	border-top: 1px dotted @darkColor-1;
+	border-bottom: 0;
 }
 
 
@@ -269,40 +264,82 @@ a {
 ######################################*/
 
 
+//	quick type sizer mixin
+.type-sizer( @val: 1 ) {
+	font-size: @base-font-size * @val;
+	line-height: (@base-font-size * @val) * @golden-ratio;
+}
+
 
 h1, h2, h3, h4, h5, h6 {
-	font-weight: 300;
+	font-weight: 900;
 	letter-spacing: -0.025em;
+	margin: 0;
+    padding: 0;
+    border: 0;
+    vertical-align: baseline;
 }
 
-h1 {
-	font-size: @base-font-size * 3.5;
-	line-height: (@base-font-size * 3.5) * @golden-ratio;
+h1 { .type-sizer( @val: 3.5 ) }
+h2 { .type-sizer( @val: 3 )   }
+h3 { .type-sizer( @val: 2.5 ) }
+h4 { .type-sizer( @val: 2 ) }
+h5 { .type-sizer( @val: 1.5 ) }
+h6 { .type-sizer( @val: 1.25 ) }
+
+p {
+	.type-sizer( @val: 1 );
+	padding: 0.75em 0.5em;
 }
 
-h2 {
-	font-size: @base-font-size * 3;
-	line-height: (@base-font-size * 3) * @golden-ratio;
+//	::TODO:: break these off into a blockquotes module
+blockquote {
+	.type-sizer( @val: 1.25 );
+	.border-radius( 5px );
+	.pos-rel;
+	padding: 0.75em 1.25em;
+	margin: 0.25em 0.75em;
+	background: @darkColor-1;
+	color: @offWhite;
+
+	.cite {
+		.type-sizer( @val: 1 );
+		display: block;
+		padding: 0.5em 1em;
+	}
+
 }
 
-h3 {
-	font-size: @base-font-size * 2.5;
-	line-height: (@base-font-size * 2.5) * @golden-ratio;
-}
+blockquote.quotey {
 
-h4 {
-	font-size: @base-font-size * 2;
-	line-height: (@base-font-size * 2) * @golden-ratio;
-}
+	&::before,
+	&:before {
+		content: '\201C';
+		display: block;
+		.pos-abs;
+		top: 40%;
+		left: 0.5%;
+		font-family: @font-serif;
+		font-size: @base-font-size * 9;
+		font-weight: bold;
+		line-height: 0;
+		opacity: 0.15;
+	}
 
-h5 {
-	font-size: @base-font-size * 1.5;
-	line-height: (@base-font-size * 1.5) * @golden-ratio;
-}
+	&::after,
+	&:after {
+		content: '\201D';
+		display: block;
+		.pos-abs;
+		top: 75%;
+		right: 5%;
+		font-family: @font-serif;
+		font-size: @base-font-size * 9;
+		font-weight: bold;
+		line-height: 0;
+		opacity: 0.15;
+	}
 
-h6 {
-	font-size: @base-font-size * 1;
-	line-height: @base-font-size * @golden-ratio;
 }
 
 
@@ -387,16 +424,17 @@ h6 {
 /*####################################
 ##           MODULE: BTN            ##
 ##         modules/btn.less         ##
-##              v1.0                ##
+##              v1.1                ##
 ######################################*/
 
 
 
-//::TEST::
 //	btn mixin
 .btn() {
-    border: 1px solid #fff;
-    border-radius: 6px;
+    .ib;
+    border: 1px solid @color-1;
+    color: @color-1;
+    border-radius: 4px;
     margin: 10px auto 0;
     max-width: 100px;
     padding: 7px 16px;
@@ -404,14 +442,52 @@ h6 {
     .clickable;
     .trans(background, 0.3s);
     &:hover {
-        background: rgba(250,250,250,0.99);
-        color: #f66;
+        background: @color-1;
+        border-radius: 6px;
+        color: @offWhite;
+    }
+    &:active {
+        border-color: @darkColor-1;
+        background: @darkColor-1;
     }
 }
+
 // basic btn class
 .btn {
     .btn();
 }
+
+.btn-alt {
+    .btn();
+    border-color: @color-2;
+    color: @color-2;
+    &:hover {
+        background: @color-2;
+    }
+    &:active {
+        border-color: @darkColor-2;
+        background: @darkColor-2;
+    }
+}
+
+
+
+/*####################################
+##           MODULE: LINKS          ##
+##         modules/links.less       ##
+##               v1.0               ##
+######################################*/
+
+
+a {
+    .trans(color, 0.175s);
+    color: @color-1;
+    text-decoration: none;
+    &:hover {
+        color: @darkColor-1;
+    }
+}
+
 
 
 
