@@ -11,7 +11,7 @@ Built out of little components that you can easily remove/steal/alter as you ple
 
 ---
 
-####Howcanigetit?
+###Howcanigetit?
 
 Clone this repo, or through the good ol' [Bowers](http://bower.io/):
 
@@ -19,17 +19,34 @@ Clone this repo, or through the good ol' [Bowers](http://bower.io/):
 bower install lesslie
 ```
 
-By default, it's gunna throw that in your bower_components/ directory. You can use it as a reference when writing your Less like this:
+By default, it's gunna throw that in your ```./bower_components/``` directory.
+
+####Reference
+
+You can use it as a reference when writing your Less like this:
 
 ```less
-@import (reference) "[root directory]./bower_components/lesslie/dist/lesslie.less";
+@import (reference) "[bower install directory]/lesslie/dist/lesslie.less";
 ```
 
+Which is dope cause then your Less file will have access to all the goodies and mixins and variables that are in the file.
+
+####Import
+
+Remove the reference and all of a sudden you get the whole thing.
+
+```less
+@import "[bower install directory]/lesslie/dist/lesslie.less";
+```
+
+This adds things like the reset, spacing classes, and modules to your Less file.
 
 ---
 
-#####Future
+###Future
 
 Looking to maybe expand Lesslie to be a (light) framework. In other words I'm essentially like every other front-end dev with too much time on his hands.
+
+---
 
 *Created by [Dave Lunny](https://himynameisdave.github.io) in the beautiful year 2014.*

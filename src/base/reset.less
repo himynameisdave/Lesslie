@@ -1,0 +1,74 @@
+/*####################################
+##            	RESET               ##
+##          base/reset.less         ##
+##              v1.0                ##
+######################################*/
+
+
+//	base reset
+html, body, div, span, h1, h2, h3, h4, h5, h6, p, a, form, label, table, caption, tbody, tfoot, thead, tr, th, td, canvas, footer, header, menu, nav {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    vertical-align: baseline;
+}
+
+//	Role-reset for older browsers
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { display: block; }
+
+//	box sizing-ftw
+* { .box-sizing(); }
+
+//
+body, html {
+    font-family: @font-sans;
+    min-height: 100%;
+    font-size: @base-font-size;
+    font-weight: @base-font-weight;
+    line-height: @base-line-height;
+    color: @offBlack;
+    background: @offWhite;
+}
+
+//	List style resetting
+ol, ul { list-style: none; }
+
+//	Responsiver images
+img { max-width: 100%; }
+
+//	Some input resets
+input[type='text'], input[type='number'], input[type='password'], textarea, select {
+    position: relative;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    height: auto;
+}
+
+//	Remove stupid ass focus border from BUTTONS (and submit BUTTONS)
+input[type='submit'], button {
+    outline: none;
+    &:focus {
+        outline: none;
+    }
+}
+
+//	Table resets
+table { border-collapse: collapse; border-spacing: 0; }
+
+//	Quick SVG fix
+svg { overflow: visible; }
+
+//	better links
+//	::TODO:: move this to a 'links' module
+a {
+    .trans(color, 0.4s);
+    color: @vrettaBlue;
+    text-decoration: underline;
+    &:hover {
+        color: #f66;
+        text-decoration: none;
+    }
+}
+
+
