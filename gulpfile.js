@@ -36,6 +36,7 @@ gulp.task('buildCore', function(){
 gulp.task('buildBase', function(){
 
 	gulp.src([
+			s+'base/normalize.less',
 			s+'base/reset.less',
 			s+'base/spacing.less',
 			s+'base/typography.less',
@@ -63,7 +64,6 @@ gulp.task('buildLesslie', function(){
 
 // //	::TODO:: write a (better) tester
 gulp.task( 'tester', function(){
-
 
 	gulp.src( 'test/style.less' )
 		.pipe( less() )
