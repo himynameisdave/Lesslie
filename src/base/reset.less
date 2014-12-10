@@ -1,33 +1,27 @@
 /*####################################
 ##            	RESET               ##
 ##          base/reset.less         ##
-##              v1.0                ##
+##              v1.1                ##
 ######################################*/
 
 
-//	base reset
-html, body, div, span, a, form, label, table, caption, tbody, tfoot, thead, tr, th, td, canvas, footer, header, menu, nav {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    vertical-align: baseline;
-}
 
-//	Role-reset for older browsers
-article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { display: block; }
-
-//	box sizing-ftw
+///      RESET::BOX-SIZING ON ALL ELEMENTS
 * { .box-sizing(); }
 
-//
-body, html {
+///      RESET::DISPLAY:BLOCK ROLE RESET
+html, body {
+    background: @offWhite;
+    color: @offBlack;
+    height: 100%;
     font-family: @font-sans;
-    min-height: 100%;
     font-size: @base-font-size;
     font-weight: @base-font-weight;
     line-height: @base-line-height;
-    color: @offBlack;
-    background: @offWhite;
+    min-height: 100%;
+    width: 100%;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
 }
 
 //	List style resetting
@@ -52,9 +46,6 @@ input[type='submit'], button {
         outline: none;
     }
 }
-
-//	Table resets
-table { border-collapse: collapse; border-spacing: 0; }
 
 //	Quick SVG fix
 svg { overflow: visible; }
