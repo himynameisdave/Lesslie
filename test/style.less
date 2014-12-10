@@ -1,6 +1,14 @@
 
-@import (reference) "../tmp/core.less";
-@import "../tmp/base.less";
+// @import (reference) "../lesslie.less";
+@import "../dist/lesslie.less";
+
+html, body {
+	height: 	100%;
+	width: 		100%;
+}
+
+
+// @import "../tmp/base.less";
 
 //	Test some btn classes
 
@@ -9,15 +17,11 @@
 }
 
 
-.btn-lg {
-	
+
+.grad-v {
+	.bg-gradient-vert( #f66, darken(#f66, 10%) );
 }
 
-.btn-md {
-	
+.grad-h {
+	.bg-gradient-horiz( #0ac, darken(#0ac, 10%) );
 }
-
-.btn-sm {
-	
-}
-
