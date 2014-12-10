@@ -1,7 +1,7 @@
 /*####################################
 ##       MIXIN: BORDER-RADIUS       ##
 ##      mixins/border-radius.less   ##
-##              v1.0                ##
+##              v1.1                ##
 ######################################*/
 
 
@@ -10,6 +10,8 @@
    -webkit-border-radius: @radius;
       -moz-border-radius: @radius;
            border-radius: @radius;
+  //useful for the droid 2.2 color bleed issue
+  background-clip: padding-box;
 }
 //depreciated. autoprefixer removes dated border-radius prefixes anyway.
 .border-radius-custom (@topleft, @topright, @bottomright, @bottomleft) {
@@ -27,6 +29,8 @@
   border-top-right-radius:                @topright;
   border-bottom-right-radius:             @bottomright;
   border-bottom-left-radius:              @bottomleft;
+
+  background-clip: padding-box;
 }
 
 
