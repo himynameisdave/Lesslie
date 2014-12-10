@@ -1,4 +1,4 @@
-###Lesslie [![](http://img.shields.io/badge/version-1.0.2-blue.svg)](https://github.com/himynameisdave/Lesslie/releases/tag/1.0.2)
+###Lesslie [![](http://img.shields.io/badge/version-1.0.3-blue.svg)](https://github.com/himynameisdave/Lesslie/releases/tag/1.0.3)
 > The (Modular) [LESS](http://lesscss.org/) Library For The Rest of Us!
 
 ![Lesslie](http://media.giphy.com/media/aek4CX1IzVx7y/giphy.gif)

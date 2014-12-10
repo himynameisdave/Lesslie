@@ -1,7 +1,7 @@
 {
-  "name": "less-core",
-  "version": "1.0.0",
-  "description": "",
+  "name": "Lesslie",
+  "version": "1.0.3",
+  "description": "A (Modular) LESS Library For The Rest of Us!",
   "main": "gulpfile.js",
   "private": "true",
   "devDependencies": {

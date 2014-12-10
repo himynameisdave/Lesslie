@@ -2,7 +2,7 @@
 [  ]                                                [  ]
 [  ]                   Lesslie                      [  ]
 [  ]      A LESS Library for the rest of us!        [  ]
-[  ]                   v1.0.0                       [  ]
+[  ]                   v1.0.2                       [  ]
 [  ]                                                [  ]
 [  ]            written & maintained by             [  ]
 [  ]            Dave Lunny @dave_lunny              [  ]
@@ -136,7 +136,7 @@
 /*####################################
 ##       MIXIN: BORDER-RADIUS       ##
 ##      mixins/border-radius.less   ##
-##              v1.0                ##
+##              v1.1                ##
 ######################################*/
 
 
@@ -145,6 +145,8 @@
    -webkit-border-radius: @radius;
       -moz-border-radius: @radius;
            border-radius: @radius;
+  //useful for the droid 2.2 color bleed issue
+  background-clip: padding-box;
 }
 //depreciated. autoprefixer removes dated border-radius prefixes anyway.
 .border-radius-custom (@topleft, @topright, @bottomright, @bottomleft) {
@@ -162,6 +164,8 @@
   border-top-right-radius:                @topright;
   border-bottom-right-radius:             @bottomright;
   border-bottom-left-radius:              @bottomleft;
+
+  background-clip: padding-box;
 }
 
 
@@ -226,24 +230,24 @@
 /*####################################
 ##         MIXIN: GRADIENTS         ##
 ##    	mixins/gradients.less   	  ##
-##              v1.0                ##
+##               v1.1               ##
 ######################################*/
 
 
 
-// Used for simple gradients with two colors (start and end)
-// ::TEST::
+// Used for simple gradients with two colors (start and end). real old browers default to the first color given
 .bg-gradient-vert(@startColor, @endColor){
-    background:       @startColor;
-    background:       -moz-linear-gradient(top,  @startColor 0%, @endColor 100%); /* FF3.6+ */
-    background:       -webkit-gradient(linear, left top, left bottom, color-stop(0%,@startColor), color-stop(100%,@endColor)); /* Chrome,Safari4+ */
-    background:       -webkit-linear-gradient(top,  @startColor 0%,@endColor 100%); /* Chrome10+,Safari5.1+ */
-    background:       -o-linear-gradient(top,  @startColor 0%,@endColor 100%); /* Opera 11.10+ */
-    background:       -ms-linear-gradient(top,  @startColor 0%,@endColor 100%); /* IE10+ */
-    background:       linear-gradient(to bottom,  @startColor 0%,@endColor 100%); /* W3C */
-    filter:           progid:DXImageTransform.Microsoft.gradient( startColorstr='@startColor', endColorstr='@endColor',GradientType=0 ); /* IE6-9 */
+  background-color: @startColor;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(@startColor), to(@endColor)); /* Saf4+, Chrome */
+  background-image: -webkit-linear-gradient(top, @startColor, @endColor); /* Chrome 10+, Saf5.1+, iOS 5+ */
+  background-image:    -moz-linear-gradient(top, @startColor, @endColor); /* FF3.6+ */
+  background-image:     -ms-linear-gradient(top, @startColor, @endColor); /* IE10 */
+  background-image:      -o-linear-gradient(top, @startColor, @endColor); /* Opera 11.10+ */
+  background-image:         linear-gradient(to bottom, @startColor, @endColor);
+  filter:            progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='@startColor', endColorstr='@endColor'); /* IE6 & IE7 */
+  -ms-filter:        "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='@startColor', endColorstr='@endColor')"; /* IE8 */
 }
-.bg-gradient-horiz(@startColor, @endColor){
+.bg-gradient-horz(@startColor, @endColor){
   background: @startColor;
   background: -moz-linear-gradient(left,  @startColor 0%, @endColor 100%);
   background: -webkit-gradient(linear, left top, right top, color-stop(0%,@startColor), color-stop(100%,@endColor));
@@ -251,10 +255,9 @@
   background: -o-linear-gradient(left,  @startColor 0%, @endColor 100%);
   background: -ms-linear-gradient(left,  @startColor 0%, @endColor 100%);
   background: linear-gradient(to right,  @startColor 0%, @endColor 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='@startColor', endColorstr='@endColor',GradientType=1 );
+  filter:  progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='@startColor', endColorstr='@endColor'); /* IE6 & IE7 */
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='@startColor', endColorstr='@endColor')"; /* IE8 */
 }
-
-
 
 /*####################################
 ##         MIXIN: TRANSFORMS        ##
@@ -326,13 +329,14 @@
 
 
 /*####################################
-##            	RESET               ##
-##          base/reset.less         ##
+##            NORMALIZE             ##
+##       base/normalize.less        ##
 ##              v1.0                ##
 ######################################*/
 
 
-//	base reset
+
+///      RESET::SPACING/VALIGN
 html, body, div, span, a, form, label, table, caption, tbody, tfoot, thead, tr, th, td, canvas, footer, header, menu, nav {
     margin: 0;
     padding: 0;
@@ -340,21 +344,117 @@ html, body, div, span, a, form, label, table, caption, tbody, tfoot, thead, tr, 
     vertical-align: baseline;
 }
 
-//	Role-reset for older browsers
-article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { display: block; }
 
-//	box sizing-ftw
+///      RESET::DISPLAY:BLOCK ROLE RESET
+article, aside, details, figcaption, figure, footer,
+header, hgroup, main, menu, nav, section, summary { display: block; }
+audio, canvas, progress, video {
+  display: inline-block;
+  vertical-align: baseline;
+}
+
+
+///     RESET::BOXY STUFFS
+audio:not([controls]) { display: none; height: 0; }
+[hidden], template { display: none; }
+a { background-color: transparent; }
+a:active, a:hover { outline: 0; }
+abbr[title] { border-bottom: 1px dotted; }
+b, strong { font-weight: bold; }
+mark { background: #ff0; color: #333; }
+small { font-size: 80%; }
+sub, sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+sup { top: -0.5em; }
+sub { bottom: -0.25em; }
+img { border: 0; }
+svg:not(:root) { overflow: hidden; }
+
+
+
+///     RESET::TEXTY STUFFS
+figure { margin: 1em 2em; }
+hr {
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  height: 0;
+}
+pre { overflow: auto; }
+code, kbd, pre, samp {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+
+///     RESET::FORM ELEMENTS
+button, input, optgroup, select, textarea {
+  color: inherit;
+  font: inherit;
+  margin: 0;
+}
+button { overflow: visible; }
+button, select { text-transform: none; }
+button, html input[type="button"], input[type="reset"], input[type="submit"] {
+  -webkit-appearance: button;
+  cursor: pointer;
+}
+button[disabled], html input[disabled] { cursor: default; }
+button::-moz-focus-inner, input::-moz-focus-inner { border: 0; padding: 0; }
+input { line-height: normal; }
+input[type="checkbox"],
+input[type="radio"] { box-sizing: border-box; padding: 0; }
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button { height: auto; }
+input[type="search"] {
+  -webkit-appearance: textfield;
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box;
+}
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration { -webkit-appearance: none; }
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+legend { border: 0; padding: 0; }
+textarea { overflow: auto; }
+optgroup { font-weight: bold; }
+
+
+///     RESET::FORM ELEMENTS
+table { border-collapse: collapse; border-spacing: 0; }
+td, th { padding: 0; }
+
+/*####################################
+##            	RESET               ##
+##          base/reset.less         ##
+##              v1.1                ##
+######################################*/
+
+
+
+///      RESET::BOX-SIZING ON ALL ELEMENTS
 * { .box-sizing(); }
 
-//
-body, html {
+///      RESET::DISPLAY:BLOCK ROLE RESET
+html, body {
+    background: @offWhite;
+    color: @offBlack;
+    height: 100%;
     font-family: @font-sans;
-    min-height: 100%;
     font-size: @base-font-size;
     font-weight: @base-font-weight;
     line-height: @base-line-height;
-    color: @offBlack;
-    background: @offWhite;
+    min-height: 100%;
+    width: 100%;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
 }
 
 //	List style resetting
@@ -379,9 +479,6 @@ input[type='submit'], button {
         outline: none;
     }
 }
-
-//	Table resets
-table { border-collapse: collapse; border-spacing: 0; }
 
 //	Quick SVG fix
 svg { overflow: visible; }
@@ -619,70 +716,6 @@ p {
 	padding: 0.75em 0.5em;
 }
 
-//	::TODO:: break these off into a blockquotes module
-blockquote {
-	.type-sizer( @val: 1.25 );
-	.border-radius( 5px );
-	.trans(background, 0.35s);
-	.pos-rel;
-	padding: 0.75em 1.25em;
-	margin: 0.25em 0.75em;
-	background: @darkColor-1;
-	color: @offWhite;
-
-	.cite {
-		.type-sizer( @val: 1 );
-		display: block;
-		padding: 0.5em 1em;
-	}
-
-	&:hover {
-		background: lighten(@darkColor-1, 1.5%);
-	}
-}
-
-blockquote.quotey {
-
-	&::before,
-	&:before {
-		content: '\201C';
-		display: block;
-		.trans-ease(left, 0.35s, ease-in-out);
-		.pos-abs;
-		top: 40%;
-		left: 0.5%;
-		font-family: @font-serif;
-		font-size: @base-font-size * 9;
-		font-weight: bold;
-		line-height: 0;
-		opacity: 0.15;
-	}
-
-	&::after,
-	&:after {
-		content: '\201D';
-		display: block;
-		.trans-ease(right, 0.35s, ease-in-out);
-		.pos-abs;
-		top: 75%;
-		right: 5%;
-		font-family: @font-serif;
-		font-size: @base-font-size * 9;
-		font-weight: bold;
-		line-height: 0;
-		opacity: 0.15;
-	}
-
-
-	&:hover {
-		&::before,
-		&:before { left: 2%; }
-		&::after,
-		&:after { right: 7.5%; }
-	}
-
-}
-
 
 
 /*####################################
@@ -758,6 +791,79 @@ blockquote.quotey {
 .circle {
   .box-sizing();
   .border-radius(100%);
+}
+
+
+
+/*####################################
+##         MODULE: BLOCKQUOTES      ##
+##       modules/blockquotes.less   ##
+##               v1.0               ##
+######################################*/
+
+
+blockquote {
+	.type-sizer( @val: 1.25 );
+	.border-radius( 5px );
+	.trans(background, 0.35s);
+	.pos-rel;
+	padding: 0.75em 1.25em;
+	margin: 0.25em 0.75em;
+	background: @darkColor-1;
+	color: @offWhite;
+	border: 0;
+
+	.cite {
+		.type-sizer( @val: 1 );
+		display: block;
+		padding: 0.5em 1em;
+	}
+
+	&:hover {
+		background: lighten(@darkColor-1, 1.5%);
+	}
+}
+
+blockquote.quotey {
+
+	&::before,
+	&:before {
+		content: '\201C';
+		display: block;
+		.trans-ease(left, 0.35s, ease-in-out);
+		.pos-abs;
+		top: 40%;
+		left: 0.5%;
+		font-family: @font-serif;
+		font-size: @base-font-size * 9;
+		font-weight: bold;
+		line-height: 0;
+		opacity: 0.15;
+	}
+
+	&::after,
+	&:after {
+		content: '\201D';
+		display: block;
+		.trans-ease(right, 0.35s, ease-in-out);
+		.pos-abs;
+		top: 75%;
+		right: 5%;
+		font-family: @font-serif;
+		font-size: @base-font-size * 9;
+		font-weight: bold;
+		line-height: 0;
+		opacity: 0.15;
+	}
+
+
+	&:hover {
+		&::before,
+		&:before { left: 2%; }
+		&::after,
+		&:after { right: 7.5%; }
+	}
+
 }
 
 

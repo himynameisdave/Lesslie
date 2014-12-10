@@ -2,7 +2,7 @@
 [  ]                                                [  ]
 [  ]                   Lesslie                      [  ]
 [  ]      A LESS Library for the rest of us!        [  ]
-[  ]                   v1.0.0                       [  ]
+[  ]                   v1.0.3                       [  ]
 [  ]                                                [  ]
 [  ]            written & maintained by             [  ]
 [  ]            Dave Lunny @dave_lunny              [  ]
@@ -136,7 +136,7 @@
 /*####################################
 ##       MIXIN: BORDER-RADIUS       ##
 ##      mixins/border-radius.less   ##
-##              v1.0                ##
+##              v1.1                ##
 ######################################*/
 
 
@@ -145,6 +145,8 @@
    -webkit-border-radius: @radius;
       -moz-border-radius: @radius;
            border-radius: @radius;
+  //useful for the droid 2.2 color bleed issue
+  background-clip: padding-box;
 }
 //depreciated. autoprefixer removes dated border-radius prefixes anyway.
 .border-radius-custom (@topleft, @topright, @bottomright, @bottomleft) {
@@ -162,6 +164,8 @@
   border-top-right-radius:                @topright;
   border-bottom-right-radius:             @bottomright;
   border-bottom-left-radius:              @bottomleft;
+
+  background-clip: padding-box;
 }
 
 
@@ -226,24 +230,24 @@
 /*####################################
 ##         MIXIN: GRADIENTS         ##
 ##    	mixins/gradients.less   	  ##
-##              v1.0                ##
+##               v1.1               ##
 ######################################*/
 
 
 
-// Used for simple gradients with two colors (start and end)
-// ::TEST::
+// Used for simple gradients with two colors (start and end). real old browers default to the first color given
 .bg-gradient-vert(@startColor, @endColor){
-    background:       @startColor;
-    background:       -moz-linear-gradient(top,  @startColor 0%, @endColor 100%); /* FF3.6+ */
-    background:       -webkit-gradient(linear, left top, left bottom, color-stop(0%,@startColor), color-stop(100%,@endColor)); /* Chrome,Safari4+ */
-    background:       -webkit-linear-gradient(top,  @startColor 0%,@endColor 100%); /* Chrome10+,Safari5.1+ */
-    background:       -o-linear-gradient(top,  @startColor 0%,@endColor 100%); /* Opera 11.10+ */
-    background:       -ms-linear-gradient(top,  @startColor 0%,@endColor 100%); /* IE10+ */
-    background:       linear-gradient(to bottom,  @startColor 0%,@endColor 100%); /* W3C */
-    filter:           progid:DXImageTransform.Microsoft.gradient( startColorstr='@startColor', endColorstr='@endColor',GradientType=0 ); /* IE6-9 */
+  background-color: @startColor;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(@startColor), to(@endColor)); /* Saf4+, Chrome */
+  background-image: -webkit-linear-gradient(top, @startColor, @endColor); /* Chrome 10+, Saf5.1+, iOS 5+ */
+  background-image:    -moz-linear-gradient(top, @startColor, @endColor); /* FF3.6+ */
+  background-image:     -ms-linear-gradient(top, @startColor, @endColor); /* IE10 */
+  background-image:      -o-linear-gradient(top, @startColor, @endColor); /* Opera 11.10+ */
+  background-image:         linear-gradient(to bottom, @startColor, @endColor);
+  filter:            progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='@startColor', endColorstr='@endColor'); /* IE6 & IE7 */
+  -ms-filter:        "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='@startColor', endColorstr='@endColor')"; /* IE8 */
 }
-.bg-gradient-horiz(@startColor, @endColor){
+.bg-gradient-horz(@startColor, @endColor){
   background: @startColor;
   background: -moz-linear-gradient(left,  @startColor 0%, @endColor 100%);
   background: -webkit-gradient(linear, left top, right top, color-stop(0%,@startColor), color-stop(100%,@endColor));
@@ -251,7 +255,8 @@
   background: -o-linear-gradient(left,  @startColor 0%, @endColor 100%);
   background: -ms-linear-gradient(left,  @startColor 0%, @endColor 100%);
   background: linear-gradient(to right,  @startColor 0%, @endColor 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='@startColor', endColorstr='@endColor',GradientType=1 );
+  filter:  progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='@startColor', endColorstr='@endColor'); /* IE6 & IE7 */
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='@startColor', endColorstr='@endColor')"; /* IE8 */
 }
 
 
