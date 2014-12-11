@@ -2,7 +2,7 @@
 [  ]                                                [  ]
 [  ]                   Lesslie                      [  ]
 [  ]      A LESS Library for the rest of us!        [  ]
-[  ]                   v1.0.2                       [  ]
+[  ]                   v1.0.3                       [  ]
 [  ]                                                [  ]
 [  ]            written & maintained by             [  ]
 [  ]            Dave Lunny @dave_lunny              [  ]
@@ -134,6 +134,21 @@
 
 
 /*####################################
+##        FUCK YEAH CLASSES         ##
+##          base/base.less          ##
+##              v1.0                ##
+######################################*/
+
+
+.background-clip( @val ) {
+	-moz-background-clip: @val;
+  	-webkit-background-clip: @val;
+  	background-clip: ~"@{val}-box";
+}
+
+
+
+/*####################################
 ##       MIXIN: BORDER-RADIUS       ##
 ##      mixins/border-radius.less   ##
 ##              v1.1                ##
@@ -258,6 +273,8 @@
   filter:  progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='@startColor', endColorstr='@endColor'); /* IE6 & IE7 */
   -ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='@startColor', endColorstr='@endColor')"; /* IE8 */
 }
+
+
 
 /*####################################
 ##         MIXIN: TRANSFORMS        ##
@@ -430,6 +447,8 @@ optgroup { font-weight: bold; }
 ///     RESET::FORM ELEMENTS
 table { border-collapse: collapse; border-spacing: 0; }
 td, th { padding: 0; }
+
+
 
 /*####################################
 ##            	RESET               ##
@@ -777,7 +796,7 @@ p {
   position: relative;
 }
 .pos-abs {
-  position:    absolute;
+  position: absolute;
 }
 .pos-fix {
   position: fixed;

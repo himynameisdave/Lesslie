@@ -1,0 +1,14 @@
+/*####################################
+##       MININ: BACKGROUND CLIP     ##
+##          mixins/base.less        ##
+##              v1.0                ##
+######################################*/
+
+
+.background-clip( @val ) {
+	-moz-background-clip: @val;
+  	-webkit-background-clip: @val;
+  	background-clip: ~"@{val}-box";
+}
+
+
