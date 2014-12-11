@@ -1,0 +1,19 @@
+/*####################################
+##        MIXIN: FULL-BG-IMG        ##
+##      mixins/full-bg-img.less     ##
+##              v1.0                ##
+######################################*/
+
+
+
+.full-bg(@img){
+	background-image: @url;
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+	background-attachment: fixed;
+	.bg-size(cover);
+	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='.@{img}', sizingMethod='scale');
+	-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='@{img}', sizingMethod='scale')";
+}
+
+

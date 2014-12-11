@@ -134,8 +134,8 @@
 
 
 /*####################################
-##        FUCK YEAH CLASSES         ##
-##          base/base.less          ##
+##       MININ: BACKGROUND CLIP     ##
+##    mixins/background-clip.less   ##
 ##              v1.0                ##
 ######################################*/
 
@@ -144,6 +144,23 @@
 	-moz-background-clip: @val;
   	-webkit-background-clip: @val;
   	background-clip: ~"@{val}-box";
+}
+
+
+
+/*####################################
+##         MIXIN: BOX-SIZING        ##
+##      mixins/box-sizing.less      ##
+##              v1.0                ##
+######################################*/
+
+
+
+.bg-size( @size ){
+	-webkit-background-size: @size;
+  	-moz-background-size:    @size;
+  	-o-background-size: 	 @size;
+  	background-size: 		 @size;
 }
 
 
@@ -208,8 +225,9 @@
 
 
 .box-sizing(){
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 
@@ -238,6 +256,23 @@
   -ms-flex-align:           @align;
   -webkit-align-items:      @align;
   align-items:              @align;
+}
+
+
+
+/*####################################
+##        MIXIN: FULL-BG-IMG        ##
+##      mixins/full-bg-img.less     ##
+##              v1.0                ##
+######################################*/
+
+
+
+.full-bg(@img){
+	background: url(@img) no-repeat center center fixed;
+	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='.@{img}', sizingMethod='scale');
+	-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='@{img}', sizingMethod='scale')";
+	.bg-size(cover);
 }
 
 
