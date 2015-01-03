@@ -134,6 +134,38 @@
 
 
 /*####################################
+##       MININ: BACKGROUND CLIP     ##
+##    mixins/background-clip.less   ##
+##              v1.0                ##
+######################################*/
+
+
+.background-clip( @val ) {
+	-moz-background-clip: @val;
+  	-webkit-background-clip: @val;
+  	background-clip: ~"@{val}-box";
+}
+
+
+
+/*####################################
+##      MIXIN: BACKGROUND SIZE      ##
+##    mixins/background-size.less   ##
+##              v1.0                ##
+######################################*/
+
+
+
+.bg-size( @size ){
+	-webkit-background-size: @size;
+  	-moz-background-size:    @size;
+  	-o-background-size: 	 @size;
+  	background-size: 		 @size;
+}
+
+
+
+/*####################################
 ##       MIXIN: BORDER-RADIUS       ##
 ##      mixins/border-radius.less   ##
 ##              v1.1                ##
@@ -193,8 +225,9 @@
 
 
 .box-sizing(){
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 
@@ -223,6 +256,26 @@
   -ms-flex-align:           @align;
   -webkit-align-items:      @align;
   align-items:              @align;
+}
+
+
+
+/*####################################
+##        MIXIN: FULL-BG-IMG        ##
+##      mixins/full-bg-img.less     ##
+##              v1.0                ##
+######################################*/
+
+
+
+.full-bg(@img){
+	background-image: @url;
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+	background-attachment: fixed;
+	.bg-size(cover);
+	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='.@{img}', sizingMethod='scale');
+	-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='@{img}', sizingMethod='scale')";
 }
 
 

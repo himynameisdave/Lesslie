@@ -2,7 +2,7 @@
 [  ]                                                [  ]
 [  ]                   Lesslie                      [  ]
 [  ]      A LESS Library for the rest of us!        [  ]
-[  ]                   v1.0.2                       [  ]
+[  ]                   v1.0.3                       [  ]
 [  ]                                                [  ]
 [  ]            written & maintained by             [  ]
 [  ]            Dave Lunny @dave_lunny              [  ]
@@ -39,9 +39,19 @@
 ##              v1.0                ##
 ######################################*/
 /*####################################
+##       MININ: BACKGROUND CLIP     ##
+##    mixins/background-clip.less   ##
+##              v1.0                ##
+######################################*/
+/*####################################
+##      MIXIN: BACKGROUND SIZE      ##
+##    mixins/background-size.less   ##
+##              v1.0                ##
+######################################*/
+/*####################################
 ##       MIXIN: BORDER-RADIUS       ##
 ##      mixins/border-radius.less   ##
-##              v1.0                ##
+##              v1.1                ##
 ######################################*/
 /*####################################
 ##         MIXIN: BOX-SHADOW        ##
@@ -59,9 +69,14 @@
 ##              v1.0                ##
 ######################################*/
 /*####################################
+##        MIXIN: FULL-BG-IMG        ##
+##      mixins/full-bg-img.less     ##
+##              v1.0                ##
+######################################*/
+/*####################################
 ##         MIXIN: GRADIENTS         ##
 ##    	mixins/gradients.less   	  ##
-##              v1.0                ##
+##               v1.1               ##
 ######################################*/
 /*####################################
 ##         MIXIN: TRANSFORMS        ##
@@ -81,7 +96,7 @@
 /*####################################
 ##            NORMALIZE             ##
 ##       base/normalize.less        ##
-##              v1.1                ##
+##              v1.0                ##
 ######################################*/
 html,
 body,
@@ -327,17 +342,18 @@ th
 ######################################*/
 *
 {
-    -moz-box-sizing: border-box;
-         box-sizing: border-box;
+    box-sizing: border-box;
 }
-body,
-html
+html,
+body
 {
     font-family: 'Lato', 'Roboto', 'Helvetica', 'Helvetica Neue', Arial, sans-serif;
     font-size: 16px;
     font-weight: 300;
     line-height: 25.88854382px;
 
+    width: 100%;
+    height: 100%;
     min-height: 100%;
 
     color: #333;
@@ -1166,10 +1182,10 @@ p
 }
 .circle
 {
-    -moz-box-sizing: border-box;
-         box-sizing: border-box;
+    box-sizing: border-box;
 
     border-radius: 100%;
+    background-clip: padding-box;
 }
 /*####################################
 ##         MODULE: BLOCKQUOTES      ##
@@ -1192,6 +1208,7 @@ blockquote
     border: 0;
     border-radius: 5px;
     background: #007f99;
+    background-clip: padding-box;
 }
 blockquote .cite
 {
@@ -1418,8 +1435,7 @@ a:hover
 ######################################*/
 .textarea
 {
-    -moz-box-sizing: border-box;
-         box-sizing: border-box;
+    box-sizing: border-box;
     width: 100%;
     height: 100%;
     margin: 0;
@@ -1485,25 +1501,4 @@ body
 {
     border-color: #007f99;
     background: #007f99;
-}
-.grad-v
-{
-    background: #f66;
-    /* FF3.6+ */
-    /* Chrome,Safari4+ */
-    /* Chrome10+,Safari5.1+ */
-    /* Opera 11.10+ */
-    /* IE10+ */
-    background: linear-gradient(to bottom, #f66 0%, #f33 100%);
-    /* W3C */
-
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='@startColor', endColorstr='@endColor', GradientType=0)
-    /* IE6-9 */
-}
-.grad-h
-{
-    background: #0ac;
-    background: linear-gradient(to right, #0ac 0%, #007f99 100%);
-
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='@startColor', endColorstr='@endColor', GradientType=1);
 }
