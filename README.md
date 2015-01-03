@@ -3,11 +3,13 @@
 
 ![Lesslie](http://media.giphy.com/media/aek4CX1IzVx7y/giphy.gif)
 
-We all need a good LESS library to simplify stupid things like vendor prefixes and just general annoyances we all face.
+We all need a good LESS library to simplify stupid things like vendor prefixes and just general annoyances we all face. [And no one has ever thought of building a LESS library before](http://designshack.net/articles/css/battle-of-the-less-mixin-libraries-less-elements-vs-less-hat-vs-bootstrap/), so I guess I'll build it (you're welcome, world).
 
-Meet Lesslie. She's the cool new young thang on the block. Totally modular, constantly being updated & maintained, and easy to understand and use.
+Alas, Meet Lesslie. She's modular and simple to understand.
 
 Built out of little components that you can easily remove/steal/alter as you please, messing around with Lesslie is dead simple and is great for inspiration for your own Less library (because there is nothing better than DIY).
+
+**Well-structured documentation coming soon (promise)**
 
 ---
 

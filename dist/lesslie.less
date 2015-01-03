@@ -149,8 +149,8 @@
 
 
 /*####################################
-##         MIXIN: BOX-SIZING        ##
-##      mixins/box-sizing.less      ##
+##      MIXIN: BACKGROUND SIZE      ##
+##    mixins/background-size.less   ##
 ##              v1.0                ##
 ######################################*/
 
@@ -269,10 +269,13 @@
 
 
 .full-bg(@img){
-	background: url(@img) no-repeat center center fixed;
+	background-image: @url;
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+	background-attachment: fixed;
+	.bg-size(cover);
 	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='.@{img}', sizingMethod='scale');
 	-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='@{img}', sizingMethod='scale')";
-	.bg-size(cover);
 }
 
 

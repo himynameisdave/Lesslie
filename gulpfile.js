@@ -13,7 +13,7 @@ gulp.task('test', [ 'build', 'tester' ]);
 
 
 //The primary build task
-gulp.task( 'build', [ 'buildCore', 'buildBase', 'buildLesslie' ] )
+gulp.task( 'build', 'buildCore', 'buildBase', 'buildLesslie'  )
 
 
 //	Builds out all the stuff that, if compiled, doesn't create anything
@@ -60,7 +60,6 @@ gulp.task('buildLesslie', function(){
 		.pipe(gulp.dest('./dist/'));
 
 });
-
 
 // //	::TODO:: write a (better) tester
 gulp.task( 'tester', function(){
