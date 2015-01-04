@@ -1,12 +1,13 @@
 //	These are
 //			 some vars
-var gulp 	= require('gulp'),
-		del   = require('del'),
-		less 	= require('gulp-less'),
-		concat 	= require('gulp-concat'),
-		prfx	= require('gulp-autoprefixer'),
-		comb	= require('gulp-csscomb'),
-		s 		= 'src/';	
+var gulp 	 = require('gulp'),
+		del    = require('del'),
+		less 	 = require('gulp-less'),
+		concat = require('gulp-concat'),
+		prfx	 = require('gulp-autoprefixer'),
+		comb	 = require('gulp-csscomb'),
+		mini   = require('gulp-minify-css'),
+		s 		 = 'src/';
 
 
 gulp.task('default', [ 'build' ]);
@@ -31,7 +32,37 @@ gulp.task('buildCore', function(){
 
 });
 
+//	Builds out all the stuff that, if compiled, actually adds CSS to the file
+//	i.e: all the resets, modules, spacing, typography, etc.
+gulp.task('buildBase', function(){
 
+	return gulp.src([
+					s+'base/normalize.less',
+					s+'base/reset.less',
+					s+'base/spacing.less',
+					s+'base/typography.less',
+					s+'base/base.less',
+					s+'modules/*.less'
+				])
+				.pipe(concat('base.less'))
+				.pipe(gulp.dest('./tmp/'));
+
+});
+
+//	Actually builds Lesslie
+gulp.task('buildLesslie', [ 'buildCore', 'buildBase' ], function(){
+
+	return gulp.src([
+						'tmp/core.less',
+						'tmp/base.less'
+					])
+					.pipe(concat('lesslie.less'))
+					.pipe(mini({keepBreaks: true}))
+					.pipe(gulp.dest('./dist/'));
+
+});
+
+//	Deletes the temp folder after other build tasks have finished
 gulp.task( 'delTemp', ['buildCore', 'buildBase', 'buildLesslie'], function(){
 
 	return del( ['tmp'] , function (err, deletedFiles) {
@@ -50,35 +81,6 @@ gulp.task( 'delTemp', ['buildCore', 'buildBase', 'buildLesslie'], function(){
 });
 
 
-//	Builds out all the stuff that, if compiled, actually adds CSS to the file
-//	i.e: all the resets, modules, spacing, typography, etc.
-gulp.task('buildBase', function(){
-
-	return gulp.src([
-					s+'base/normalize.less',
-					s+'base/reset.less',
-					s+'base/spacing.less',
-					s+'base/typography.less',
-					s+'base/base.less',
-					s+'modules/*.less'
-				])
-				.pipe(concat('base.less'))
-				.pipe(gulp.dest('./tmp/'));
-
-});
-
-
-//	Actually builds Lesslie
-gulp.task('buildLesslie', function(){
-
-	return gulp.src([
-						'tmp/core.less',
-						'tmp/base.less'
-					])
-					.pipe(concat('lesslie.less'))
-					.pipe(gulp.dest('./dist/'));
-
-});
 
 // //	::TODO:: write a (better) tester
 gulp.task( 'tester', function(){
