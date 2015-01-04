@@ -17,7 +17,7 @@
 @base-font-weight: 300;
 @base-line-height: @base-font-size * @golden-ratio;
 
-@font-sans: 'Lato','Roboto', 'Helvetica', 'Helvetica Neue', Arial, sans-serif;;
+@font-sans: 'Roboto', 'Helvetica', 'Helvetica Neue', Arial, sans-serif;
 @font-serif: 'Droid Serif', 'Georgia', Times, serif;
 
 //	Main Color Scheme vars
@@ -86,12 +86,18 @@
 
 
 
+
+.appearance(@app){
+  -webkit-appearance: @app;
+    -moz-appearance: @app;
+      appearance: @app;
+}
+
 .appearance-none(){
   -webkit-appearance: none;
     -moz-appearance: none;
       appearance: none;
 }
-
 
 
 
@@ -136,7 +142,7 @@
    -webkit-border-radius: @radius;
       -moz-border-radius: @radius;
            border-radius: @radius;
-  //useful for the droid 2.2 color bleed issue
+  //useful for a droid 2.2 color bleed issue
   background-clip: padding-box;
 }
 //depreciated. autoprefixer removes dated border-radius prefixes anyway.
@@ -164,10 +170,10 @@
 
 
 
-.box-shadow(@h-shadow, @v-shadow, @blur, @spread, @color) {
-    -moz-box-shadow: @h-shadow @v-shadow @blur @spread @color;
-      -webkit-box-shadow: @h-shadow @v-shadow @blur @spread @color;
-        box-shadow: @h-shadow @v-shadow @blur @spread @color;
+.box-shadow(@arguments) {
+  -webkit-box-shadow: @arguments;
+    -moz-box-shadow: @arguments;
+      box-shadow: @arguments;
 }
 
 
@@ -212,7 +218,7 @@
 
 
 .full-bg(@img){
-	background-image: @url;
+	background-image: @img;
 	background-repeat: no-repeat;
 	background-position: 50% 50%;
 	background-attachment: fixed;
@@ -280,18 +286,12 @@
 
 
 
-.trans(@prop, @speed){
-  -webkit-transition:    @prop @speed;
-     -moz-transition:    @prop @speed;
-       -o-transition:    @prop @speed;
-          transition:    @prop @speed;
-}
 
-.trans-ease(@prop, @speed, @ease){
-  -webkit-transition:    @prop @speed @ease;
-     -moz-transition:    @prop @speed @ease;
-       -o-transition:    @prop @speed @ease;
-          transition:    @prop @speed @ease;
+.trans(@arguments){
+  -webkit-transition:    @arguments;
+     -moz-transition:    @arguments;
+       -o-transition:    @arguments;
+          transition:    @arguments;
 }
 
 
@@ -761,7 +761,7 @@ p {
 blockquote {
 	.type-sizer( @val: 1.25 );
 	.border-radius( 5px );
-	.trans(background, 0.35s);
+	.trans(background 0.35s);
 	.pos-rel;
 	padding: 0.75em 1.25em;
 	margin: 0.25em 0.75em;
@@ -786,7 +786,7 @@ blockquote.quotey {
 	&:before {
 		content: '\201C';
 		display: block;
-		.trans-ease(left, 0.35s, ease-in-out);
+		.trans(left 0.35s ease-in-out);
 		.pos-abs;
 		top: 40%;
 		left: 0.5%;
@@ -801,7 +801,7 @@ blockquote.quotey {
 	&:after {
 		content: '\201D';
 		display: block;
-		.trans-ease(right, 0.35s, ease-in-out);
+		.trans(right 0.35s ease-in-out);
 		.pos-abs;
 		top: 75%;
 		right: 5%;
@@ -839,7 +839,7 @@ blockquote.quotey {
     padding: 7px 16px;
     text-align: center;
     .clickable;
-    .trans(background, 0.3s);
+    .trans(background 0.3s);
     &:hover {
         background: @color-1;
         border-radius: 6px;
@@ -875,7 +875,7 @@ blockquote.quotey {
 
 
 a {
-    .trans(color, 0.175s);
+    .trans(color 0.175s);
     color: @color-1;
     text-decoration: none;
     &:hover {

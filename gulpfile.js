@@ -90,6 +90,7 @@ gulp.task( 'tester', [ 'build','buildCore', 'buildBase', 'buildLesslie', 'delTem
 							.on( 'error', function(e){
 								console.log("Ya done goofed!");
 								console.log("Error on line " + e.line + " in the file " + e.filename);
+								// console.log(e)
 							} )
 					.pipe( prfx({
 							browsers: ['last 2 versions'],

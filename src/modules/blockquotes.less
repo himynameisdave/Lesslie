@@ -8,7 +8,7 @@
 blockquote {
 	.type-sizer( @val: 1.25 );
 	.border-radius( 5px );
-	.trans(background, 0.35s);
+	.trans(background 0.35s);
 	.pos-rel;
 	padding: 0.75em 1.25em;
 	margin: 0.25em 0.75em;
@@ -33,7 +33,7 @@ blockquote.quotey {
 	&:before {
 		content: '\201C';
 		display: block;
-		.trans-ease(left, 0.35s, ease-in-out);
+		.trans(left 0.35s ease-in-out);
 		.pos-abs;
 		top: 40%;
 		left: 0.5%;
@@ -48,7 +48,7 @@ blockquote.quotey {
 	&:after {
 		content: '\201D';
 		display: block;
-		.trans-ease(right, 0.35s, ease-in-out);
+		.trans(right 0.35s ease-in-out);
 		.pos-abs;
 		top: 75%;
 		right: 5%;

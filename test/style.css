@@ -1,103 +1,3 @@
-/*//////////////////////////////////////////////////////
-[  ]                                                [  ]
-[  ]                   Lesslie                      [  ]
-[  ]      A LESS Library for the rest of us!        [  ]
-[  ]                   v1.0.3                       [  ]
-[  ]                                                [  ]
-[  ]            written & maintained by             [  ]
-[  ]            Dave Lunny @dave_lunny              [  ]
-[  ]                                                [  ]
-//////////////////////////////////////////////////////*/
-/*####################################
-##            MAIN VARS             ##
-##         vars/vars.less           ##
-##              v1.0                ##
-######################################*/
-/*####################################
-##           MAIN COLORS            ##
-##         base/colors.less         ##
-##              v1.0                ##
-######################################*/
-/*####################################
-##         MIXIN: ANIMATIONS        ##
-##    	mixins/animations.less   	  ##
-##              v1.0                ##
-######################################*/
-.anim-inf
-{
-    -webkit-animation-iteration-count: infinite;
-            animation-iteration-count: infinite;
-}
-/*####################################
-##      MIXIN: APPEARANCE-NONE      ##
-##    mixins/appearance-none.less   ##
-##              v1.0                ##
-######################################*/
-/*####################################
-##         MIXIN: BACKFACE          ##
-##        mixins/backface.less      ##
-##              v1.0                ##
-######################################*/
-/*####################################
-##       MININ: BACKGROUND CLIP     ##
-##    mixins/background-clip.less   ##
-##              v1.0                ##
-######################################*/
-/*####################################
-##      MIXIN: BACKGROUND SIZE      ##
-##    mixins/background-size.less   ##
-##              v1.0                ##
-######################################*/
-/*####################################
-##       MIXIN: BORDER-RADIUS       ##
-##      mixins/border-radius.less   ##
-##              v1.1                ##
-######################################*/
-/*####################################
-##         MIXIN: BOX-SHADOW        ##
-##      mixins/box-shadow.less      ##
-##              v1.0                ##
-######################################*/
-/*####################################
-##         MIXIN: BOX-SIZING        ##
-##      mixins/box-sizing.less      ##
-##              v1.0                ##
-######################################*/
-/*####################################
-##          MIXIN: FLEXBOX          ##
-##        mixins/flexbox.less       ##
-##              v1.0                ##
-######################################*/
-/*####################################
-##        MIXIN: FULL-BG-IMG        ##
-##      mixins/full-bg-img.less     ##
-##              v1.0                ##
-######################################*/
-/*####################################
-##         MIXIN: GRADIENTS         ##
-##    	mixins/gradients.less   	  ##
-##               v1.1               ##
-######################################*/
-/*####################################
-##         MIXIN: TRANSFORMS        ##
-##    	mixins/transforms.less   	##
-##              v1.0                ##
-######################################*/
-/*####################################
-##        MIXIN: TRANSITION         ##
-##    	mixins/transition.less      ##
-##              v1.0                ##
-######################################*/
-/*####################################
-##        MIXIN: USER-SELECT        ##
-##    	mixins/user-select.less     ##
-##              v1.0                ##
-######################################*/
-/*####################################
-##            NORMALIZE             ##
-##       base/normalize.less        ##
-##              v1.0                ##
-######################################*/
 html,
 body,
 div,
@@ -335,11 +235,6 @@ th
 {
     padding: 0;
 }
-/*####################################
-##            	RESET               ##
-##          base/reset.less         ##
-##              v1.1                ##
-######################################*/
 *
 {
     box-sizing: border-box;
@@ -347,7 +242,7 @@ th
 html,
 body
 {
-    font-family: 'Lato', 'Roboto', 'Helvetica', 'Helvetica Neue', Arial, sans-serif;
+    font-family: 'Roboto', 'Helvetica', 'Helvetica Neue', Arial, sans-serif;
     font-size: 16px;
     font-weight: 300;
     line-height: 25.88854382px;
@@ -406,11 +301,6 @@ hr
     border-top: 1px dotted #007f99;
     border-bottom: 0;
 }
-/*####################################
-##          MARGIN CLASSES          ##
-##         base/spacing.less        ##
-##              v1.0                ##
-######################################*/
 .ma1
 {
     margin: 6px;
@@ -731,11 +621,6 @@ hr
 {
     margin-left: 96px;
 }
-/*####################################
-##         PADDING CLASSES          ##
-##         base/spacing.less        ##
-##              v1.0                ##
-######################################*/
 .pa1
 {
     padding: 6px;
@@ -1056,11 +941,6 @@ hr
 {
     padding-left: 96px;
 }
-/*####################################
-##            TYPOGRAPHY            ##
-##       base/typography.less       ##
-##               v1.0               ##
-######################################*/
 h1,
 h2,
 h3,
@@ -1115,11 +995,6 @@ p
 
     padding: .75em .5em;
 }
-/*####################################
-##           BASE CLASSES           ##
-##          base/base.less          ##
-##              v1.0                ##
-######################################*/
 .ib
 {
     display: inline-block;
@@ -1187,11 +1062,6 @@ p
     border-radius: 100%;
     background-clip: padding-box;
 }
-/*####################################
-##         MODULE: BLOCKQUOTES      ##
-##       modules/blockquotes.less   ##
-##               v1.0               ##
-######################################*/
 blockquote
 {
     font-size: 20px;
@@ -1271,11 +1141,6 @@ blockquote.quotey:hover:after
 {
     right: 7.5%;
 }
-/*####################################
-##           MODULE: BTN            ##
-##         modules/btn.less         ##
-##              v1.1                ##
-######################################*/
 .btn
 {
     display: inline-block;
@@ -1412,11 +1277,6 @@ blockquote.quotey:hover:after
     border-color: #f33;
     background: #f33;
 }
-/*####################################
-##           MODULE: LINKS          ##
-##         modules/links.less       ##
-##               v1.0               ##
-######################################*/
 a
 {
     transition: color .175s;
@@ -1428,11 +1288,6 @@ a:hover
 {
     color: #007f99;
 }
-/*####################################
-##         MODULE: TEXTAREA         ##
-##       modules/textarea.less      ##
-##              v1.0                ##
-######################################*/
 .textarea
 {
     box-sizing: border-box;
@@ -1501,4 +1356,15 @@ body
 {
     border-color: #007f99;
     background: #007f99;
+}
+.fatso
+{
+    background-image: 'img/pic.jpg';
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: 50% 50%;
+    background-size: cover;
+
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='.img/pic.jpg', sizingMethod='scale');
+    -ms-filter: 'progid:DXImageTransform.Microsoft.AlphaImageLoader(src=\'img/pic.jpg\', sizingMethod=\'scale\')';
 }
