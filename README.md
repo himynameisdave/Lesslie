@@ -1,4 +1,4 @@
-###Lesslie [![](http://img.shields.io/badge/version-1.0.3-blue.svg)](https://github.com/himynameisdave/Lesslie/releases/tag/1.0.3)
+###Lesslie [![](http://img.shields.io/badge/version-1.0.4-blue.svg)](https://github.com/himynameisdave/Lesslie/releases/tag/1.0.4)
 > The (Modular) [LESS](http://lesscss.org/) Library For The Rest of Us!
 
 ![Lesslie](http://media.giphy.com/media/aek4CX1IzVx7y/giphy.gif)
@@ -38,7 +38,7 @@ Which is dope cause then your Less file will have access to all the goodies and 
 Remove the reference and all of a sudden you get the whole thing.
 
 ```less
-@import "[bower install directory]/lesslie/dist/lesslie.less";
+@import "[bower install directory]/lesslie/lesslie.less";
 ```
 
 This adds things like the reset, spacing classes, and modules to your Less file.
