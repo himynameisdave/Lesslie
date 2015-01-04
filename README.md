@@ -28,7 +28,7 @@ By default, it's gunna throw that in your ```./bower_components/``` directory.
 You can use it as a reference when writing your Less like this:
 
 ```less
-@import (reference) "[bower install directory]/lesslie/dist/lesslie.less";
+@import (reference) "[bower install directory]/lesslie/lesslie.less";
 ```
 
 Which is dope cause then your Less file will have access to all the goodies and mixins and variables that are in the file.

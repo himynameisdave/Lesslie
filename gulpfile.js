@@ -58,7 +58,7 @@ gulp.task('buildLesslie', [ 'buildCore', 'buildBase' ], function(){
 					])
 					.pipe(concat('lesslie.less'))
 					.pipe(mini({keepBreaks: true}))
-					.pipe(gulp.dest('./dist/'));
+					.pipe(gulp.dest('./'));
 
 });
 
