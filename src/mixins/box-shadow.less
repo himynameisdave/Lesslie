@@ -1,14 +1,14 @@
 /*####################################
 ##         MIXIN: BOX-SHADOW        ##
 ##      mixins/box-shadow.less      ##
-##              v1.0                ##
+##              v1.1                ##
 ######################################*/
 
 
-.box-shadow(@h-shadow, @v-shadow, @blur, @spread, @color) {
-    -moz-box-shadow: @h-shadow @v-shadow @blur @spread @color;
-      -webkit-box-shadow: @h-shadow @v-shadow @blur @spread @color;
-        box-shadow: @h-shadow @v-shadow @blur @spread @color;
+.box-shadow(@arguments) {
+  -webkit-box-shadow: @arguments;
+    -moz-box-shadow: @arguments;
+      box-shadow: @arguments;
 }
 
 
