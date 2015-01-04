@@ -6,7 +6,7 @@ var gulp 	 = require('gulp'),
 		concat = require('gulp-concat'),
 		prfx	 = require('gulp-autoprefixer'),
 		comb	 = require('gulp-csscomb'),
-		mini   = require('gulp-minify-css'),
+		mini   = require('gulp-strip-css-comments'),
 		s 		 = 'src/';
 
 
@@ -57,7 +57,7 @@ gulp.task('buildLesslie', [ 'buildCore', 'buildBase' ], function(){
 						'tmp/base.less'
 					])
 					.pipe(concat('lesslie.less'))
-					.pipe(mini({keepBreaks: true}))
+					.pipe(mini())
 					.pipe(gulp.dest('./'));
 
 });
@@ -83,7 +83,7 @@ gulp.task( 'delTemp', ['buildCore', 'buildBase', 'buildLesslie'], function(){
 
 
 // //	::TODO:: write a (better) tester
-gulp.task( 'tester', function(){
+gulp.task( 'tester', [ 'build','buildCore', 'buildBase', 'buildLesslie', 'delTemp' ], function(){
 
 	return gulp.src( 'test/style.less' )
 					.pipe( less() )
