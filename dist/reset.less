@@ -103,3 +103,64 @@ table { border-collapse: collapse; border-spacing: 0; }
 td, th { padding: 0; }
 
 
+
+/*####################################
+##            	RESET               ##
+##          base/reset.less         ##
+##              v1.1                ##
+######################################*/
+
+
+
+///      RESET::BOX-SIZING ON ALL ELEMENTS
+* { .box-sizing(); }
+
+///      RESET::DISPLAY:BLOCK ROLE RESET
+html, body {
+    background: @offWhite;
+    color: @offBlack;
+    height: 100%;
+    font-family: @font-sans;
+    font-size: @base-font-size;
+    font-weight: @base-font-weight;
+    line-height: @base-line-height;
+    min-height: 100%;
+    width: 100%;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+
+//	List style resetting
+ol, ul { list-style: none; }
+
+//	Responsiver images
+img { max-width: 100%; }
+
+//	Some input resets
+input[type='text'], input[type='number'], input[type='password'], textarea, select {
+    position: relative;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    height: auto;
+}
+
+//	Remove stupid ass focus border from BUTTONS (and submit BUTTONS)
+input[type='submit'], button {
+    outline: none;
+    &:focus {
+        outline: none;
+    }
+}
+
+//	Quick SVG fix
+svg { overflow: visible; }
+
+//	fix the horizontal row
+hr {
+	margin: 0.25em 0.1em;
+	border-top: 1px dotted @darkColor-1;
+	border-bottom: 0;
+}
+
+

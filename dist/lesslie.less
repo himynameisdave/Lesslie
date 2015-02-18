@@ -1,0 +1,777 @@
+/*//////////////////////////////////////////////////////
+[  ]                                                [  ]
+[  ]                   Lesslie                      [  ]
+[  ]      A LESS Library for the rest of us!        [  ]
+[  ]                   v1.1.0                       [  ]
+[  ]                                                [  ]
+[  ]            written & maintained by             [  ]
+[  ]            Dave Lunny @dave_lunny              [  ]
+[  ]                                                [  ]
+//////////////////////////////////////////////////////*/
+
+
+
+
+
+/*####################################
+##            MAIN VARS             ##
+##         vars/vars.less           ##
+##              v1.0                ##
+######################################*/
+
+
+//	Basic sizer bases
+@golden-ratio: 1.61803398875;
+@base-size: 6px;
+
+
+// 	Main Typographic vars
+@base-font-size: 16px;
+@base-rem: 0.25rem;
+@base-font-weight: 300;
+@base-line-height: @base-font-size * @golden-ratio;
+
+@font-sans: 'Roboto', 'Helvetica', 'Helvetica Neue', Arial, sans-serif;
+@font-serif: 'Droid Serif', 'Georgia', Times, serif;
+
+//	Main Color Scheme vars
+@color-1: @vrettaBlue;
+@color-2: @vrettaRed;
+
+@lightColor-1: 	lighten(@color-1, 10%);
+@darkColor-1: 	darken(@color-1, 10%);
+
+@lightColor-2: 	lighten(@color-2, 10%);
+@darkColor-2: 	darken(@color-2, 10%);
+
+
+
+/*####################################
+##           MAIN COLORS            ##
+##         base/colors.less         ##
+##              v1.0                ##
+######################################*/
+
+
+@red:         #e51c23;
+@pink:        #e91e63;
+@purple:      #9c27b0;
+@deepPurple:  #673ab7;
+@indigo:      #3f51b5;
+@blue:        #5677fc;
+@lightBlue:   #03a9f4;
+@cyan:        #00bcd4;
+@teal:        #009688;
+@green:       #259b24;
+@lightGreen:  #8bc34a;
+@lime:        #cddc39;
+@yellow:      #cddc39;
+@amber:       #ffc107;
+@orange:      #ff9800;
+@deepOrange:  #ff5722;
+@brown:       #795548;
+@grey:        #9e9e9e;
+@lightGrey:   #cccccc;
+@blueGrey:    #607d8b;
+
+@black:       #000000;
+@white:       #ffffff;
+@offBlack:    #333333;
+@offWhite:    #f2f2f2;
+@vrettaBlue:  #00aacc;
+@vrettaRed:   #ff6666;
+
+
+
+/*####################################
+##            TYPOGRAPHY            ##
+##       base/typography.less       ##
+##               v1.0               ##
+######################################*/
+
+
+//	quick type sizer mixin
+.type-sizer( @val: 1 ) {
+	font-size: @base-font-size * @val;
+	line-height: (@base-font-size * @val) * @golden-ratio;
+}
+
+
+h1, h2, h3, h4, h5, h6 {
+	font-weight: 900;
+	letter-spacing: -0.025em;
+	margin: 0;
+    padding: 0;
+    border: 0;
+    vertical-align: baseline;
+}
+
+h1 { .type-sizer( @val: 3.5 ) }
+h2 { .type-sizer( @val: 3 )   }
+h3 { .type-sizer( @val: 2.5 ) }
+h4 { .type-sizer( @val: 2 ) }
+h5 { .type-sizer( @val: 1.5 ) }
+h6 { .type-sizer( @val: 1.25 ) }
+
+p {
+	.type-sizer( @val: 1 );
+	padding: 0.75em 0.5em;
+}
+
+
+
+/*####################################
+##           BASE CLASSES           ##
+##          base/base.less          ##
+##              v1.0                ##
+######################################*/
+
+
+//  Inline-block
+.ib  {
+  display:        inline-block;
+  vertical-align: middle;
+}
+
+//  Bold text
+.bold {
+  font-weight:    bold;
+}
+
+//  Center
+.center  {
+  text-align:     center;
+}
+
+//  height:100%
+.fullheight {
+  height:         100%;
+}
+
+//  min-height:100%
+.minfullheight {
+  min-height:     100%;
+}
+
+//  visually hide
+.hidden {
+  visibility: hidden;
+  opacity: 0;
+}
+
+//  display:none
+.vanish {
+  display:  none;
+}
+
+//  mauto - class
+.mauto{
+  margin-left:  auto;
+  margin-right: auto;
+}
+//  mauto - mixin
+.mauto(@topBottom){
+  margin: @topBottom auto;
+}
+
+//  positioning
+.pos-rel {
+  position: relative;
+}
+.pos-abs {
+  position: absolute;
+}
+.pos-fix {
+  position: fixed;
+}
+
+//  better UX for clickable elements
+.clickable {cursor: pointer; .user-select(none)}
+
+//  draw a circle
+//  ::TEST::
+.circle {
+  .box-sizing();
+  .border-radius(100%);
+}
+
+
+
+@base-rem: 0.25rem;
+
+
+/*####################################
+##          MARGIN CLASSES          ##
+##         base/spacing.less        ##
+##              v1.0                ##
+######################################*/
+
+
+.ma-genny(16);
+
+.ma-genny(@n, @i: 1) when (@i =< @n) {
+  .ma-@{i} {
+    margin: (@base-rem * @i);
+  }
+  .ma-genny(@n, (@i + 1));
+}
+
+.mt-genny(16);
+
+.mt-genny(@n, @i: 1) when (@i =< @n) {
+  .mt-@{i} {
+    margin-top: (@base-rem * @i);
+  }
+  .mt-genny(@n, (@i + 1));
+}
+
+.mr-genny(16);
+
+.mr-genny(@n, @i: 1) when (@i =< @n) {
+  .mr-@{i} {
+    margin-right: (@base-rem * @i);
+  }
+  .mr-genny(@n, (@i + 1));
+}
+
+.mb-genny(16);
+
+.mb-genny(@n, @i: 1) when (@i =< @n) {
+  .mb-@{i} {
+    margin-bottom: (@base-rem * @i);
+  }
+  .mb-genny(@n, (@i + 1));
+}
+
+.ml-genny(16);
+
+.ml-genny(@n, @i: 1) when (@i =< @n) {
+  .ml-@{i} {
+    margin-left: (@base-rem * @i);
+  }
+  .ml-genny(@n, (@i + 1));
+}
+
+
+
+// ######################################
+// ##         PADDING CLASSES          ##
+// ##         base/spacing.less        ##
+// ##              v1.0                ##
+// ######################################
+
+
+.pa-genny(16);
+
+.pa-genny(@n, @i: 1) when (@i =< @n) {
+  .pa-@{i} {
+    padding: (@base-rem * @i);
+  }
+  .pa-genny(@n, (@i + 1));
+}
+
+.pt-genny(16);
+
+.pt-genny(@n, @i: 1) when (@i =< @n) {
+  .pt-@{i} {
+    padding-top: (@base-rem * @i);
+  }
+  .pt-genny(@n, (@i + 1));
+}
+
+.pr-genny(16);
+
+.pr-genny(@n, @i: 1) when (@i =< @n) {
+  .pr-@{i} {
+    padding-right: (@base-rem * @i);
+  }
+  .pr-genny(@n, (@i + 1));
+}
+
+.pb-genny(16);
+
+.pb-genny(@n, @i: 1) when (@i =< @n) {
+  .pb-@{i} {
+    padding-bottom: (@base-rem * @i);
+  }
+  .pb-genny(@n, (@i + 1));
+}
+
+.pl-genny(16);
+
+.pl-genny(@n, @i: 1) when (@i =< @n) {
+  .pl-@{i} {
+    padding-left: (@base-rem * @i);
+  }
+  .pl-genny(@n, (@i + 1));
+}
+
+
+
+/*####################################
+##         MIXIN: ANIMATIONS        ##
+##    	mixins/animations.less   	  ##
+##              v1.0                ##
+######################################*/
+
+
+
+// ::TEST::
+.anim(@time) {
+    -webkit-animation-duration:     @time;
+          animation-duration:       @time;
+  -webkit-animation-fill-mode:      both;
+          animation-fill-mode:      both
+}
+.anim-inf()  {
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+}
+
+
+
+/*####################################
+##         MIXIN: APPEARANCE        ##
+##    mixins/appearance-none.less   ##
+##              v1.1                ##
+######################################*/
+
+
+
+.appearance(@app){
+  -webkit-appearance: @app;
+    -moz-appearance: @app;
+      appearance: @app;
+}
+
+.appearance-none(){
+  -webkit-appearance: none;
+    -moz-appearance: none;
+      appearance: none;
+}
+
+
+/*####################################
+##         MIXIN: BACKFACE          ##
+##        mixins/backface.less      ##
+##              v1.0                ##
+######################################*/
+
+
+.backface(@backface){
+  -webkit-backface-visibility:    @backface;
+  backface-visibility:            @backface;
+}
+
+
+
+/*####################################
+##       MININ: BACKGROUND CLIP     ##
+##    mixins/background-clip.less   ##
+##              v1.0                ##
+######################################*/
+
+
+.background-clip( @val ) {
+	-moz-background-clip: @val;
+  	-webkit-background-clip: @val;
+  	background-clip: ~"@{val}-box";
+}
+
+
+
+/*####################################
+##      MIXIN: BACKGROUND SIZE      ##
+##    mixins/background-size.less   ##
+##              v1.0                ##
+######################################*/
+
+
+
+.bg-size( @size ){
+	-webkit-background-size: @size;
+  	-moz-background-size:    @size;
+  	-o-background-size: 	 @size;
+  	background-size: 		 @size;
+}
+
+
+
+/*####################################
+##       MIXIN: BORDER-RADIUS       ##
+##      mixins/border-radius.less   ##
+##              v1.1                ##
+######################################*/
+
+
+//depreciated. autoprefixer removes dated border-radius prefixes anyway.
+.border-radius (@radius) {
+   -webkit-border-radius: @radius;
+      -moz-border-radius: @radius;
+           border-radius: @radius;
+  //useful for a droid 2.2 color bleed issue
+  background-clip: padding-box;
+}
+//depreciated. autoprefixer removes dated border-radius prefixes anyway.
+.border-radius-custom (@topleft, @topright, @bottomright, @bottomleft) {
+  -webkit-border-top-left-radius:         @topleft;
+  -webkit-border-top-right-radius:        @topright;
+  -webkit-border-bottom-right-radius:     @bottomright;
+  -webkit-border-bottom-left-radius:      @bottomleft;
+
+  -moz-border-radius-topleft:             @topleft;
+  -moz-border-radius-topright:            @topright;
+  -moz-border-radius-bottomright:         @bottomright;
+  -moz-border-radius-bottomleft:          @bottomleft;
+
+  border-top-left-radius:                 @topleft;
+  border-top-right-radius:                @topright;
+  border-bottom-right-radius:             @bottomright;
+  border-bottom-left-radius:              @bottomleft;
+
+  background-clip: padding-box;
+}
+
+
+
+/*####################################
+##         MIXIN: BOX-SHADOW        ##
+##      mixins/box-shadow.less      ##
+##              v1.1                ##
+######################################*/
+
+
+.box-shadow(@arguments) {
+  -webkit-box-shadow: @arguments;
+    -moz-box-shadow: @arguments;
+      box-shadow: @arguments;
+}
+
+
+
+/*####################################
+##         MIXIN: BOX-SIZING        ##
+##      mixins/box-sizing.less      ##
+##              v1.0                ##
+######################################*/
+
+
+.box-sizing(){
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+
+
+/*####################################
+##          MIXIN: FLEXBOX          ##
+##        mixins/flexbox.less       ##
+##              v1.0                ##
+######################################*/
+
+
+// Still untested/under development:
+.flexbox(@flex, @direction, @justify, @align){
+  display:                  -ms-flexbox;
+  display:                  -webkit-flex;
+  display:                  flex;
+
+  -ms-flex-direction:       @direction;
+  -webkit-flex-direction:   @direction;
+  flex-direction:           @direction;
+
+  -ms-flex-pack:            @justify;
+  -webkit-justify-content:  @justify;
+  justify-content:          @justify;
+
+  -ms-flex-align:           @align;
+  -webkit-align-items:      @align;
+  align-items:              @align;
+}
+
+
+
+/*####################################
+##        MIXIN: FULL-BG-IMG        ##
+##      mixins/full-bg-img.less     ##
+##              v1.0                ##
+######################################*/
+
+
+
+.full-bg(@img){
+  background-image: url(@img);
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+	background-attachment: fixed;
+	.bg-size(cover);
+	filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='.@{img}', sizingMethod='scale');
+	-ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='@{img}', sizingMethod='scale')";
+}
+
+
+
+/*####################################
+##         MIXIN: GRADIENTS         ##
+##    	mixins/gradients.less   	  ##
+##               v1.1               ##
+######################################*/
+
+
+
+// Used for simple gradients with two colors (start and end). real old browers default to the first color given
+.bg-gradient-vert(@startColor, @endColor){
+  background-color: @startColor;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(@startColor), to(@endColor)); /* Saf4+, Chrome */
+  background-image: -webkit-linear-gradient(top, @startColor, @endColor); /* Chrome 10+, Saf5.1+, iOS 5+ */
+  background-image:    -moz-linear-gradient(top, @startColor, @endColor); /* FF3.6+ */
+  background-image:     -ms-linear-gradient(top, @startColor, @endColor); /* IE10 */
+  background-image:      -o-linear-gradient(top, @startColor, @endColor); /* Opera 11.10+ */
+  background-image:         linear-gradient(to bottom, @startColor, @endColor);
+  filter:            progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='@startColor', endColorstr='@endColor'); /* IE6 & IE7 */
+  -ms-filter:        "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='@startColor', endColorstr='@endColor')"; /* IE8 */
+}
+.bg-gradient-horz(@startColor, @endColor){
+  background: @startColor;
+  background: -moz-linear-gradient(left,  @startColor 0%, @endColor 100%);
+  background: -webkit-gradient(linear, left top, right top, color-stop(0%,@startColor), color-stop(100%,@endColor));
+  background: -webkit-linear-gradient(left,  @startColor 0%, @endColor 100%);
+  background: -o-linear-gradient(left,  @startColor 0%, @endColor 100%);
+  background: -ms-linear-gradient(left,  @startColor 0%, @endColor 100%);
+  background: linear-gradient(to right,  @startColor 0%, @endColor 100%);
+  filter:  progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='@startColor', endColorstr='@endColor'); /* IE6 & IE7 */
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='@startColor', endColorstr='@endColor')"; /* IE8 */
+}
+
+
+
+/*####################################
+##         MIXIN: TRANSFORMS        ##
+##    	mixins/transforms.less   	  ##
+##              v1.0                ##
+######################################*/
+
+
+
+.scale(@val){
+    -ms-transform:      scale(@val); /* IE 9 */
+    -webkit-transform:  scale(@val); /* Chrome, Safari, Opera */
+    transform:          scale(@val);
+}
+.scale-x-y(@x,@y){
+    -ms-transform:      scale(@x,@y); /* IE 9 */
+    -webkit-transform:  scale(@x,@y); /* Chrome, Safari, Opera */
+    transform:          scale(@x,@y);
+}
+.rotate(@rotate){
+  -ms-transform:      rotate(@rotate); /* IE 9 */
+  -webkit-transform:  rotate(@rotate); /* Chrome, Safari, Opera */
+  transform:          rotate(@rotate);
+}
+
+//	TODO: add more transforms
+
+
+
+/*####################################
+##        MIXIN: TRANSITION         ##
+##    	mixins/transition.less      ##
+##              v1.1                ##
+######################################*/
+
+
+.trans(@arguments){
+  -webkit-transition:    @arguments;
+     -moz-transition:    @arguments;
+       -o-transition:    @arguments;
+          transition:    @arguments;
+}
+
+
+
+/*####################################
+##        MIXIN: USER-SELECT        ##
+##    	mixins/user-select.less     ##
+##              v1.0                ##
+######################################*/
+
+
+.user-select(@user-select) {
+  -webkit-touch-callout: @user-select;
+  -webkit-user-select: @user-select;
+  -khtml-user-select: @user-select;
+  -moz-user-select: @user-select;
+  -ms-user-select: @user-select;
+  user-select: @user-select;
+}
+
+
+
+/*####################################
+##         MODULE: BLOCKQUOTES      ##
+##       modules/blockquotes.less   ##
+##               v1.0               ##
+######################################*/
+
+
+blockquote {
+	.type-sizer( @val: 1.25 );
+	.border-radius( 5px );
+	.trans(background 0.35s);
+	.pos-rel;
+	padding: 0.75em 1.25em;
+	margin: 0.25em 0.75em;
+	background: @darkColor-1;
+	color: @offWhite;
+	border: 0;
+
+	.cite {
+		.type-sizer( @val: 1 );
+		display: block;
+		padding: 0.5em 1em;
+	}
+
+	&:hover {
+		background: lighten(@darkColor-1, 1.5%);
+	}
+}
+
+blockquote.quotey {
+
+	&::before,
+	&:before {
+		content: '\201C';
+		display: block;
+		.trans(left 0.35s ease-in-out);
+		.pos-abs;
+		top: 40%;
+		left: 0.5%;
+		font-family: @font-serif;
+		font-size: @base-font-size * 9;
+		font-weight: bold;
+		line-height: 0;
+		opacity: 0.15;
+	}
+
+	&::after,
+	&:after {
+		content: '\201D';
+		display: block;
+		.trans(right 0.35s ease-in-out);
+		.pos-abs;
+		top: 75%;
+		right: 5%;
+		font-family: @font-serif;
+		font-size: @base-font-size * 9;
+		font-weight: bold;
+		line-height: 0;
+		opacity: 0.15;
+	}
+
+
+	&:hover {
+		&::before,
+		&:before { left: 2%; }
+		&::after,
+		&:after { right: 7.5%; }
+	}
+
+}
+
+
+
+/*####################################
+##           MODULE: BTN            ##
+##         modules/btn.less         ##
+##              v1.1                ##
+######################################*/
+
+
+
+//	btn mixin
+.btn() {
+    .ib;
+    border: 1px solid @color-1;
+    color: @color-1;
+    border-radius: 4px;
+    margin: 10px auto 0;
+    max-width: 100px;
+    padding: 7px 16px;
+    text-align: center;
+    .clickable;
+    .trans(background 0.3s);
+    &:hover {
+        background: @color-1;
+        border-radius: 6px;
+        color: @offWhite;
+    }
+    &:active {
+        border-color: @darkColor-1;
+        background: @darkColor-1;
+    }
+}
+
+// basic btn class
+.btn {
+    .btn();
+}
+
+.btn-alt {
+    .btn();
+    border-color: @color-2;
+    color: @color-2;
+    &:hover {
+        background: @color-2;
+    }
+    &:active {
+        border-color: @darkColor-2;
+        background: @darkColor-2;
+    }
+}
+
+
+
+/*####################################
+##           MODULE: LINKS          ##
+##         modules/links.less       ##
+##               v1.0               ##
+######################################*/
+
+
+a {
+    .trans(color 0.175s);
+    color: @color-1;
+    text-decoration: none;
+    &:hover {
+        color: @darkColor-1;
+    }
+}
+
+
+
+
+/*####################################
+##         MODULE: TEXTAREA         ##
+##       modules/textarea.less      ##
+##              v1.0                ##
+######################################*/
+
+
+
+//::TEST::
+.textarea {
+    .box-sizing();
+    resize: none;
+    width: 100%;
+    height: 100%;
+    background: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    &:focus {
+      outline: none;
+    }
+}
+
+

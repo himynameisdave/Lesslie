@@ -1,6 +1,6 @@
 {
   "name": "Lesslie",
-  "version": "1.0.5",
+  "version": "1.1.0",
   "description": "A (Modular) LESS Library For The Rest of Us!",
   "main": "gulpfile.js",
   "private": "true",

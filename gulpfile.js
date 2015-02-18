@@ -1,5 +1,8 @@
-//	These are
-//			 some vars
+////////////////////////////////////////////////
+//					  		LESSLIE:										//
+//		    A modular LESS library for 					//
+//				     the rest of us!								//
+////////////////////////////////////////////////
 var gulp 	 = require('gulp'),
 		del    = require('del'),
 		less 	 = require('gulp-less'),
@@ -15,75 +18,40 @@ gulp.task('test', [ 'build', 'tester' ]);
 
 
 //The primary build task
-gulp.task( 'build', ['buildCore', 'buildBase', 'buildLesslie', 'delTemp']  )
+gulp.task( 'build', [ 'build-reset', 'build-lesslie' ] );
 
 
-//	Builds out all the stuff that, if compiled, doesn't create anything
-//	i.e: all the vars, mixins, etc.
-gulp.task('buildCore', function(){
-
-	return gulp.src([
-					s+'vars/vars.less',
-					s+'vars/colors.less',
-					s+'mixins/*.less'
-				])
-				.pipe(concat('core.less'))
-				.pipe(gulp.dest('./tmp/'))
-
-});
-
-//	Builds out all the stuff that, if compiled, actually adds CSS to the file
-//	i.e: all the resets, modules, spacing, typography, etc.
-gulp.task('buildBase', function(){
+//	builds out the reset
+gulp.task( 'build-reset', function(){
 
 	return gulp.src([
-					s+'base/normalize.less',
-					s+'base/reset.less',
-					s+'base/spacing.less',
-					s+'base/typography.less',
-					s+'base/base.less',
-					s+'modules/*.less'
-				])
-				.pipe(concat('base.less'))
-				.pipe(gulp.dest('./tmp/'));
-
-});
-
-//	Actually builds Lesslie
-gulp.task('buildLesslie', [ 'buildCore', 'buildBase' ], function(){
-
-	return gulp.src([
-						'tmp/core.less',
-						'tmp/base.less'
+						s+'base/normalize.less',
+						s+'base/reset.less'
 					])
-					.pipe(concat('lesslie.less'))
-					.pipe(mini())
-					.pipe(gulp.dest('./'));
+				.pipe(concat('reset.less'))
+				.pipe(gulp.dest('./dist/'));
 
 });
 
-//	Deletes the temp folder after other build tasks have finished
-gulp.task( 'delTemp', ['buildCore', 'buildBase', 'buildLesslie'], function(){
+gulp.task( 'build-lesslie', function(){
 
-	return del( ['tmp'] , function (err, deletedFiles) {
-					if(err){
-						console.log(err);
-						return;
-					}
-
-					var dels = 'deleted the following: \n';
-			    deletedFiles.forEach( function( val, index ){
-			        dels +=  '  - '+val+'\n';
-			    })
-			    console.log(dels);
-			  });
+	return gulp.src([
+							s+'vars/vars.less',
+							s+'vars/colors.less',
+							s+'base/typography.less',
+							s+'base/base.less',
+							s+'base/spacing.less',
+							s+'mixins/*.less',
+							s+'modules/*.less'
+						])
+						.pipe(concat('lesslie.less'))
+						.pipe(gulp.dest('./dist/'));
 
 });
-
 
 
 // //	::TODO:: write a (better) tester
-gulp.task( 'tester', [ 'build','buildCore', 'buildBase', 'buildLesslie', 'delTemp' ], function(){
+gulp.task( 'tester', [ 'build' ], function(){
 
 	return gulp.src( 'test/style.less' )
 					.pipe( less() )
